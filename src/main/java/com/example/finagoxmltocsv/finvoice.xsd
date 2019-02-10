@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:complexType name="BuyerPartyDetails">
+		<xs:sequence>
+			<xs:element name="BuyerPartyIdentifier" type="xs:string" minOccurs="0"/>
+			<xs:element name="BuyerOrganisationName" type="xs:string" minOccurs="0"/>
+			<xs:element name="BuyerPostalAddressDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BuyerStreetName" type="xs:string" minOccurs="0"/>
+						<xs:element name="BuyerTownName" type="xs:string" minOccurs="0"/>
+						<xs:element name="BuyerPostCodeIdentifier" type="xs:string" minOccurs="0"/>
+						<xs:element name="CountryCode" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeliveryPartyDetails">
+		<xs:sequence>
+			<xs:element name="DeliveryOrganisationName" type="xs:string" minOccurs="0"/>
+			<xs:element name="DeliveryPostalAddressDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DeliveryStreetName" type="xs:string" minOccurs="0"/>
+						<xs:element name="DeliveryTownName" type="xs:string" minOccurs="0"/>
+						<xs:element name="DeliveryPostCodeIdentifier" type="xs:string" minOccurs="0"/>
+						<xs:element name="CountryCode" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvoiceDetails">
+		<xs:sequence>
+			<xs:element name="InvoiceTypeCode" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="CodeListAgencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceDate" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Format" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceTotalVatExcludedAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceTotalVatAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceTotalVatIncludedAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceFreeText" type="xs:string" minOccurs="0"/>
+			<xs:element name="PaymentTermsDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="InvoiceDueDate" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="Format" type="xs:string"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PaymentOverDueFineDetails" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="PaymentOverDueFinePercent" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvoiceRow">
+		<xs:sequence>
+			<xs:element name="ArticleIdentifier" type="xs:string" minOccurs="0"/>
+			<xs:element name="ArticleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="OrderedQuantity" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="QuantityUnitCode" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="UnitPriceAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="AmountCurrencyIdentifier" type="xs:string"/>
+							<xs:attribute name="UnitPriceUnitCode" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RowVatRatePercent" type="xs:positiveInteger" minOccurs="0"/>
+			<xs:element name="RowVatAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name ="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RowVatExcludedAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name ="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RowAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name ="AmountCurrencyIdentifier" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Finvoice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BuyerPartyDetails" type="BuyerPartyDetails" minOccurs="0"/>
+				<xs:element name="DeliveryPartyDetails" type="DeliveryPartyDetails" minOccurs="0"/>
+				<xs:element name="InvoiceDetails" type="InvoiceDetails" minOccurs="0"/>
+				<xs:element name="InvoiceRow" type="InvoiceRow" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="Version" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
